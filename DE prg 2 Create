@@ -1,0 +1,41 @@
+# 2.To create the following tables with appropriate columns. Customer table Product table Sales order table
+
+!pip install mysqlclient
+!pip install mysql-connector-python
+import sys
+import mysql.connector
+import mysql.connector
+from mysql.connector import Error
+import pandas as vAR_pd
+vAR_conn = ""
+vAR_conn = mysql.connector.connect(host="66.42.60.177",database =
+"dssaiai_lms_structure",user = "dssaiai_struct_u",password = "~z=wL1jg~Q4$",port=3306)
+vAR_cursor = vAR_conn.cursor()
+print('Cursor Opened')
+#vAR_Query = vAR_cursor.execute("CREATE TABLE DSAI_CUSTOMER (Customer_ID
+int, Customer_Name varchar(80), Customer_Address varchar(255), Locality varchar(255),
+City varchar(255), State varchar(255), Country varchar(255), Postal_Code int,
+Email_Address varchar(255),Phone_Number int, PRIMARY KEY (Customer_ID))")
+vAR_Query = vAR_cursor.execute("SELECT * FROM DSAI_CUSTOMER")
+vAR_df =
+vAR_pd.DataFrame(vAR_cursor.fetchall(),columns=['Customer_ID','Customer_Name','Cust
+omer_Address','Locality','City','State','Country','Postal_Code','Email_Address','Phone_Numbe
+r'])
+vAR_df.head()
+#vAR_Query = vAR_cursor.execute("CREATE TABLE DSAI_PRODUCT (Product_ID int,
+Customer_ID int, Product_Family varchar(80), Product_Group varchar(255), Product
+varchar(255), SKU varchar(255), Unit_Price DECIMAL (10, 2), PRIMARY KEY
+(Product_ID))")
+vAR_Query = vAR_cursor.execute("SELECT * FROM DSAI_PRODUCT")
+vAR_df =
+vAR_pd.DataFrame(vAR_cursor.fetchall(),columns=['Product_ID','Customer_ID','Product_F
+amily','Product_Group','Product','SKU','Unit_Price'])
+vAR_df.head()
+vAR_Query = vAR_cursor.execute("CREATE TABLE DSAI_SALES_ORDER1
+(Sales_Order_ID int, Customer_ID int, Product_ID int, Sales_Order_Date date, Quantity
+varchar(255), PRIMARY KEY (Sales_Order_ID))")
+vAR_Query = vAR_cursor.execute("SELECT * FROM DSAI_SALES_ORDER1")
+vAR_df =
+vAR_pd.DataFrame(vAR_cursor.fetchall(),columns=['Sales_Order_ID','Customer_ID','Produ
+ct_ID','Sales_Order_Date','Quantity'])
+vAR_df.head()
